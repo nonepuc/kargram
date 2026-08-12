@@ -12,6 +12,12 @@ object AuthenticationConfig {
     const val MATRIX_ORG_URL = "https://matrix.org"
 
     /**
+     * Account provider pre-filled on the login screen when nothing else is configured.
+     * This is the server name, the SDK resolves it through .well-known.
+     */
+    const val DEFAULT_ACCOUNT_PROVIDER_URL = "https://kar.cam"
+
+    /**
      * URL with some docs that explain what's sliding sync and how to add it to your home server.
      */
     const val SLIDING_SYNC_READ_MORE_URL = "https://github.com/matrix-org/sliding-sync/blob/main/docs/Landing.md"

@@ -38,6 +38,16 @@ plugins {
     // alias(libs.plugins.gms.google.services)
 }
 
+// ABIs to build. The Rust SDK aar is ~97 MB of native code across the four ABIs, so
+// stripping/packaging all of them plus a universal APK dominates local build time.
+// On a dev machine pass `-Pkar.abis=arm64-v8a` (or set it in gradle.properties) to
+// build only what the test device needs.
+val karAbis: List<String> = (project.findProperty("kar.abis") as? String)
+    ?.split(',')
+    ?.map { it.trim() }
+    ?.filter { it.isNotEmpty() }
+    ?: listOf("armeabi-v7a", "x86", "arm64-v8a", "x86_64")
+
 android {
     namespace = "io.element.android.x"
 
@@ -49,7 +59,7 @@ android {
 
         // Keep abiFilter for the universalApk
         ndk {
-            abiFilters += listOf("armeabi-v7a", "x86", "arm64-v8a", "x86_64")
+            abiFilters += karAbis
         }
 
         // Ref: https://developer.android.com/studio/build/configure-apk-splits.html#configure-abi-split
@@ -68,9 +78,10 @@ android {
 
                 if (!buildingAppBundle) {
                     // Specifies a list of ABIs that Gradle should create APKs for.
-                    include("armeabi-v7a", "x86", "arm64-v8a", "x86_64")
+                    include(*karAbis.toTypedArray())
                     // Generate a universal APK that includes all ABIs, so user who installs from CI tool can use this one by default.
-                    isUniversalApk = true
+                    // Pointless (and slow) when a single ABI is built.
+                    isUniversalApk = karAbis.size > 1
                 }
             }
         }

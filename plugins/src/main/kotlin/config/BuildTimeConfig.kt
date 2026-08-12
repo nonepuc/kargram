@@ -9,19 +9,24 @@
 package config
 
 object BuildTimeConfig {
-    const val APPLICATION_ID = "io.element.android.x"
-    const val APPLICATION_NAME = "Element X"
+    const val APPLICATION_ID = "cam.kar.app"
+    const val APPLICATION_NAME = "Kargram"
     const val GOOGLE_APP_ID_RELEASE = "1:912726360885:android:d097de99a4c23d2700427c"
     const val GOOGLE_APP_ID_DEBUG = "1:912726360885:android:def0a4e454042e9b00427c"
     const val GOOGLE_APP_ID_NIGHTLY = "1:912726360885:android:e17435e0beb0303000427c"
 
-    val METADATA_HOST_REVERSED: String? = null
-    val URL_WEBSITE: String? = null
-    val URL_LOGO: String? = null
-    val URL_COPYRIGHT: String? = null
-    val URL_ACCEPTABLE_USE: String? = null
-    val URL_PRIVACY: String? = null
-    val URL_POLICY: String? = null
+    // Reverse-DNS of the host of URL_WEBSITE. Used as the OAuth redirect scheme
+    // ("cam.kar.app:/"), which MAS validates against the client_uri host.
+    val METADATA_HOST_REVERSED: String? = "cam.kar.app"
+    val URL_WEBSITE: String? = "https://app.kar.cam"
+
+    // All of these must stay on the same host as URL_WEBSITE, MAS rejects the
+    // dynamic client registration otherwise.
+    val URL_LOGO: String? = "https://app.kar.cam/mobile-icon.png"
+    val URL_COPYRIGHT: String? = "https://app.kar.cam/copyright"
+    val URL_ACCEPTABLE_USE: String? = "https://app.kar.cam/acceptable-use"
+    val URL_PRIVACY: String? = "https://app.kar.cam/privacy"
+    val URL_POLICY: String? = "https://app.kar.cam/privacy"
     val OAUTH_CLIENT_URL_PATH: String? = "apps/android"
     val SERVICES_MAPTILER_BASE_URL: String? = null
     val SERVICES_MAPTILER_APIKEY: String? = null
