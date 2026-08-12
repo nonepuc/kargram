@@ -57,9 +57,14 @@ android {
         versionCode = Versions.VERSION_CODE
         versionName = Versions.VERSION_NAME
 
-        // Keep abiFilter for the universalApk
-        ndk {
-            abiFilters += karAbis
+        // Keep abiFilter for the universalApk. AGP rejects abiFilters when the ABI split
+        // produces no universal APK ("Conflicting configuration ... in ndk abiFilters
+        // cannot be present when splits abi filters are set"), so only set them when a
+        // universal APK is actually built - see isUniversalApk below.
+        if (karAbis.size > 1) {
+            ndk {
+                abiFilters += karAbis
+            }
         }
 
         // Ref: https://developer.android.com/studio/build/configure-apk-splits.html#configure-abi-split
