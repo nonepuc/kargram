@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (c) 2025 Element Creations Ltd.
+  ~ Copyright 2023 New Vector Ltd.
+  ~
+  ~ SPDX-License-Identifier: AGPL-3.0-only OR LicenseRef-Element-Commercial.
+  ~ Please see LICENSE files in the repository root for full details.
+  -->
+<!--
+  Light-theme backdrop for the onboarding page, replacing Element's teal-to-blue photo.
+
+  A vector instead of the 228 KB PNG it replaces: the artwork is a plain gradient, so there is
+  nothing a bitmap buys here. The viewport is portrait so that the diagonal still reads as a
+  diagonal after ContentScale.Crop stretches it to the screen.
+
+  It stays pale on purpose - the onboarding title and message use textPrimary, which is near
+  black in the light theme and needs a light ground to sit on.
+-->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:width="180dp"
+    android:height="360dp"
+    android:viewportWidth="180"
+    android:viewportHeight="360">
+
+    <path android:pathData="M0,0h180v360h-180z">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:type="linear"
+                android:startX="0"
+                android:startY="0"
+                android:endX="180"
+                android:endY="360">
+                <item
+                    android:color="#FFE7DEFF"
+                    android:offset="0" />
+                <item
+                    android:color="#FFF6F2FF"
+                    android:offset="0.55" />
+                <item
+                    android:color="#FFFFFFFF"
+                    android:offset="1" />
+            </gradient>
+        </aapt:attr>
+    </path>
+
+    <!-- A soft violet bloom behind the logo, which sits at 40% of the height. Without it the
+         page reads as a flat wash. -->
+    <path android:pathData="M90,120m-150,0a150,150 0 1,0 300,0a150,150 0 1,0 -300,0z">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:type="radial"
+                android:centerX="90"
+                android:centerY="120"
+                android:gradientRadius="150">
+                <item
+                    android:color="#33A98BFF"
+                    android:offset="0" />
+                <item
+                    android:color="#00A98BFF"
+                    android:offset="1" />
+            </gradient>
+        </aapt:attr>
+    </path>
+</vector>

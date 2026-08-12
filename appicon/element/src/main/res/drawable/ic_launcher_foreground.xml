@@ -6,8 +6,11 @@
   ~ Please see LICENSE files in the repository root for full details.
   -->
 <!--
-  Debug icon background: flat, and darker than the release violet so a debug build is
-  recognisable at a glance in the launcher next to a release one.
+  Launcher icon foreground: the same K as the onboarding mark.
+
+  Adaptive icons only guarantee the central 66 of the 108dp viewport is visible - launchers
+  mask and parallax the rest - so the glyph is kept inside roughly 34..74 on both axes and
+  centred on 54.
 -->
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
     android:width="108dp"
@@ -15,7 +18,9 @@
     android:viewportWidth="108"
     android:viewportHeight="108">
     <path
-        android:fillColor="#4B26AB"
-        android:fillType="evenOdd"
-        android:pathData="m0,0h108v108h-108z" />
+        android:pathData="M38,32 L38,76 M38,54 L70,32 M38,54 L70,76"
+        android:strokeColor="#FFFFFFFF"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:strokeWidth="11" />
 </vector>

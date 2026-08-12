@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (c) 2025 Element Creations Ltd.
+  ~
+  ~ SPDX-License-Identifier: AGPL-3.0-only OR LicenseRef-Element-Commercial.
+  ~ Please see LICENSE files in the repository root for full details.
+  -->
+<!--
+  Strings overridden for Kargram.
+
+  These names already exist in features/login/impl/src/main/res/values/localazy.xml. That file
+  is generated from Localazy and gets overwritten, so it must not be edited; app resources win
+  over library resources when the two are merged, which makes this the override point that
+  survives pulling from upstream.
+
+  Only the default (en) values are replaced. The translated variants under values-<lang> still
+  carry Element's wording, so a device set to another language will show the old copy until
+  these are translated too.
+-->
+<resources>
+    <!-- Was "Be in your element". -->
+    <string name="screen_onboarding_welcome_title">"Your server. Your rules."</string>
+    <!-- Was "Welcome to the fastest %1$s ever. Supercharged for speed and simplicity."
+         %1$s is ApplicationConfig.PRODUCTION_APPLICATION_NAME. -->
+    <string name="screen_onboarding_welcome_message">"%1$s runs on a server you own. Nobody else reads it, nobody else turns it off."</string>
+</resources>

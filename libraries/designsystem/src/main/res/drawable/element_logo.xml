@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (c) 2025 Element Creations Ltd.
+  ~ Copyright 2023 New Vector Ltd.
+  ~
+  ~ SPDX-License-Identifier: AGPL-3.0-only OR LicenseRef-Element-Commercial.
+  ~ Please see LICENSE files in the repository root for full details.
+  -->
+<!--
+  Kargram's mark, shown inside the glass tile on the onboarding screen.
+
+  This replaces the two xxhdpi PNGs (day and night) with a single vector: the mark is flat
+  geometry, so it costs nothing to draw and stays sharp at the 120dp the large logo atom asks
+  for. One asset serves both themes because it sits on its own violet disc rather than on the
+  page background.
+-->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:width="96dp"
+    android:height="96dp"
+    android:viewportWidth="96"
+    android:viewportHeight="96">
+
+    <path android:pathData="M4,48a44,44 0 1,0 88,0a44,44 0 1,0 -88,0z">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:type="linear"
+                android:startX="10"
+                android:startY="10"
+                android:endX="86"
+                android:endY="86">
+                <item
+                    android:color="#FF8B6DF0"
+                    android:offset="0" />
+                <item
+                    android:color="#FF5B31CC"
+                    android:offset="1" />
+            </gradient>
+        </aapt:attr>
+    </path>
+
+    <!-- The K, drawn as strokes with round caps rather than filled outlines: one path to
+         maintain, and the caps keep it from looking sharp against the disc. -->
+    <path
+        android:pathData="M34,28 L34,68 M34,48 L62,28 M34,48 L62,68"
+        android:strokeColor="#FFFFFFFF"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:strokeWidth="9" />
+</vector>
